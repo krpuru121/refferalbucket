@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.vassarlabs.platform.m2c.cassandra.connection</groupId>
+	<artifactId>cassandra-connection-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>platform-m2c-cassandra-connection-service</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+	</properties>
+
+	<parent>
+		<groupId>com.vassarlabs.platform.m2c</groupId>
+		<artifactId>cassandra-connection</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.vassarlabs.platform.m2c.cassandra.connection</groupId>
+			<artifactId>cassandra-connection-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.vassarlabs.platform.m2c.cassandra.connection</groupId>
+			<artifactId>cassandra-connection-impl</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+</project>

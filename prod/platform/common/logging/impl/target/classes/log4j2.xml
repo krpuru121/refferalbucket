@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
+	<Properties>
+		<Property name="logPath">/home/ubuntu/logs</Property>
+	</Properties>
+
+	<Appenders>
+		<Console name="ConsoleLog" target="SYSTEM_OUT">
+			<PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %c - %m%n" />
+		</Console>
+		<RollingFile name="DebugRollingFile" fileName="${logPath}/vassarLog.log"
+			filePattern="${logPath}/vassarLog-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout>
+				<pattern>%-5p|%d{yyyy-MM-dd-HH:mm:ss}|[%t] %c{1} - %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100 MB" />
+			</Policies>
+			<!-- DefaultRolloverStrategy max="4" / -->
+		</RollingFile>
+		<RollingFile name="ErrorRollingFile" fileName="${logPath}/vassarLog-error.log"
+			filePattern="${logPath}/vassarLog-error-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout>
+				<pattern>%-5p|%d{yyyy-MM-dd-HH:mm:ss}|[%t] %c{1} - %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<!-- DefaultRolloverStrategy max="4" / -->
+		</RollingFile>
+		<RollingFile name="ThirdPartyRollingFile" fileName="${logPath}/tpLogs.log"
+			filePattern="${logPath}/tpLogs-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout>
+				<pattern>%-5p|%d{yyyy-MM-dd-HH:mm:ss}|[%t] %c{1} - %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="100 MB" />
+			</Policies>
+			<!-- DefaultRolloverStrategy max="4" / -->
+		</RollingFile>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="com.vassarlabs" level="debug" additivity="false">
+			<AppenderRef ref="DebugRollingFile" level="debug" />
+			<AppenderRef ref="ErrorRollingFile" level="error" />
+			<AppenderRef ref="ConsoleLog" level="debug" />
+		</Logger>
+
+		<Root level="debug">
+			<AppenderRef ref="ThirdPartyRollingFile" />
+			<AppenderRef ref="ConsoleLog" />
+		</Root>
+	</Loggers>
+
+</Configuration>

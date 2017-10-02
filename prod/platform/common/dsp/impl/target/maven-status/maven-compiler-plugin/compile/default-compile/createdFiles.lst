@@ -1,0 +1,6 @@
+com/vassarlabs/common/dsp/rdbms/impl/RDBMSDataStoreImpl.class
+com/vassarlabs/common/dsp/rdbms/impl/AJDBCConnection.class
+com/vassarlabs/common/dsp/rdbms/impl/ARDBMSDataStore.class
+com/vassarlabs/common/dsp/rdbms/impl/JDBCConnectionImpl.class
+com/vassarlabs/common/dsp/rdbms/impl/ADataStore.class
+com/vassarlabs/common/dsp/rdbms/cp/impl/BoneCPConnectionPoolManager.class

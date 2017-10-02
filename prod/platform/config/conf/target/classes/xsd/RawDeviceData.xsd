@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+    <xs:include schemaLocation="Common.xsd" id="vlcommon"/>
+    <xs:complexType name="metaData">
+        <xs:sequence>
+            <xs:element name="rawDeviceDataUUID" type="xs:string"/>
+            <xs:element name="receivedProtocolType" type="xs:string"/>
+            <xs:element name="receivedEndPoint" type="xs:string"/>
+            <xs:element name="fromProtocolType" type="xs:string"/>
+            <xs:element name="fromStartPoint" type="xs:string"/>
+            <xs:element name="fromAgentType" type="xs:string"/>
+            <xs:element name="sentTs" type="xs:string"/>
+            <xs:element name="receivedTs" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" ref="nameValue" minOccurs="0"/>
+            <xs:element ref="extension" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="data">
+        <xs:sequence>
+            <xs:element ref="nameValue" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element ref="extension" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="rawDeviceData">
+        <xs:sequence>
+            <xs:element name="metaData" type="metaData"/>
+            <xs:element name="data" type="data"/>
+            <xs:element ref="nameValue" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="uploadedFileList" type="uploadedFileList" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="extension" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="uploadedFile">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="value" minOccurs="0" type="xs:string"/>
+            <xs:element name="fileName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="uploadedFileList">
+        <xs:sequence>
+            <xs:element name="uploadedFile" type="uploadedFile" minOccurs="0" maxOccurs="unbounded"
+            />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="rawDeviceDataList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="rawDeviceData" type="rawDeviceData" maxOccurs="unbounded"/>
+                <xs:element ref="extension" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

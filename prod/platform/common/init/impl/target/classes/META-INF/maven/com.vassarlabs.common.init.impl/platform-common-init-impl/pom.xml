@@ -1,0 +1,72 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.vassarlabs.common.init.impl</groupId>
+	<artifactId>platform-common-init-impl</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+
+	<parent>
+		<artifactId>platform-common-init</artifactId>
+		<groupId>com.vassarlabs.common.init</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<properties>
+	</properties>
+
+	<dependencies>
+		<!-- Vassarlabs Artifacts -->
+		<dependency>
+			<groupId>com.vassarlabs.common.utils</groupId>
+			<artifactId>platform-common-utils</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vassarlabs.config.conf</groupId>
+			<artifactId>platform-config-conf</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vassarlabs.config.api</groupId>
+			<artifactId>platform-config-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vassarlabs.config.impl</groupId>
+			<artifactId>platform-config-impl</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vassarlabs.common.init.api</groupId>
+			<artifactId>platform-common-init-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vassarlabs.common.dsp.api</groupId>
+			<artifactId>platform-common-dsp-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.vassarlabs.platform.m2c.cassandra.connection</groupId>
+			<artifactId>cassandra-connection-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- <dependency> <groupId>com.vassarlabs.iwm.rstats.impl</groupId> <artifactId>proj-iwm-rstats-impl</artifactId> 
+			<version>0.0.1-SNAPSHOT</version> </dependency> -->
+
+
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.3</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+		</plugins>
+	</build>
+</project>

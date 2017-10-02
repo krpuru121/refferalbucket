@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+    <xs:include schemaLocation="Common.xsd"/>
+    <xs:complexType name="eventType">
+        <xs:sequence>
+            <xs:element name="eventName" type="xs:string"/>
+            <xs:element name="eventHandlerClass" type="xs:string"/>
+            <xs:element ref="nameValue" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="extension" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="eventTypeList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="eventType" type="eventType" maxOccurs="unbounded"/>
+                <xs:element ref="extension" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

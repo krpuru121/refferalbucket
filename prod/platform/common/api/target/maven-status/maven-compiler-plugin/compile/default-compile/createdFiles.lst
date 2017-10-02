@@ -1,0 +1,4 @@
+com/vassarlabs/common/service/api/IPropertyReaderService.class
+com/vassarlabs/common/pojo/api/IPropertyFileDetails.class
+com/vassarlabs/common/pojo/api/AVLObject.class
+com/vassarlabs/common/pojo/api/IVLObject.class

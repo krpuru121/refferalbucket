@@ -1,0 +1,5 @@
+com/vassarlabs/cassandra/datastore/api/ICassandraDataStore.class
+com/vassarlabs/cassandra/connection/api/ICassandraConnection.class
+com/vassarlabs/cassandra/connection/pool/api/ICassandraConnectionPool.class
+com/vassarlabs/cassandra/connection/service/api/ICassandraQueryRetryService.class
+com/vassarlabs/cassandra/connection/service/api/ICassandraConnectorService.class

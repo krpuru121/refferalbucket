@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.vassarlabs.platform</groupId>
+  <artifactId>m2c</artifactId>
+  <packaging>pom</packaging>
+
+  <name>platform-m2c</name>
+  <url>http://maven.apache.org</url>
+
+  <modules>
+    <module> cassandra-connection </module>
+   <!-- <module> cassandra-data </module> -->
+   <!-- <module> metadata-mapper </module> -->
+  </modules>
+
+  <properties>
+  </properties>
+
+  <parent>
+    <groupId>com.vassarlabs.prod.platform</groupId>
+    <artifactId>platform</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  
+  <dependencies>
+  </dependencies>
+</project>

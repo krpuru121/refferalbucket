@@ -1,0 +1,3 @@
+com/vassarlabs/common/init/service/RESTInitServiceImpl.class
+com/vassarlabs/common/init/service/ApplicationInitServiceImpl.class
+com/vassarlabs/common/init/service/StormInitServiceImpl.class

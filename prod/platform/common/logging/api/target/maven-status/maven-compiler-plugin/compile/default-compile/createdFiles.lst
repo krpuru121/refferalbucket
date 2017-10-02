@@ -1,0 +1,3 @@
+com/vassarlabs/common/logging/api/IVLLogService.class
+com/vassarlabs/common/logging/api/IVLLoggerFactory.class
+com/vassarlabs/common/logging/api/IVLLogger.class

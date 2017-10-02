@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+    <xs:include schemaLocation="Common.xsd"/>
+    <xs:complexType name="dataHandlerMap">
+        <xs:sequence>
+            <xs:element name="commDeviceType" type="xs:string"/>
+            <xs:element name="commDeviceDataHandlerClass" type="xs:string" minOccurs="0"/>
+            <xs:element ref="nameValue" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="extension" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="rawDeviceDataMapping">
+        <xs:sequence>
+            <xs:element name="commDeviceChannelIdentifier" type="xs:string"/>
+            <xs:element name="commDeviceChannelHandlerClass" type="xs:string"/>
+            <xs:element name="dataHandlerMap" type="dataHandlerMap" maxOccurs="unbounded"
+                minOccurs="0"/>
+            <xs:element ref="nameValue" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="extension" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="rawDeviceDataMappingList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="rawDeviceDataMapping" type="rawDeviceDataMapping"
+                    maxOccurs="unbounded"/>
+                <xs:element ref="extension" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

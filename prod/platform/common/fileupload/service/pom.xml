@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.vassarlabs.prod.platform.fileupload</groupId>
+    <artifactId>platform-common-fileupload</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <groupId>com.vassarlabs.prod.platform.fileupload.service</groupId>
+  <artifactId>platform-common-fileupload-service</artifactId>
+  
+  <name>platform-common-fileupload-service</name>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>com.vassarlabs.prod.platform.fileupload.api</groupId>
+  		<artifactId>platform-common-fileupload-api</artifactId>
+  		<version>1.0-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.vassarlabs.common.logging.api</groupId>
+  		<artifactId>platform-common-logging-api</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+</project>

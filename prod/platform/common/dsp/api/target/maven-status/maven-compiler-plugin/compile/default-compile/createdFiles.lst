@@ -1,0 +1,17 @@
+com/vassarlabs/common/dsp/err/ObjectDeleteException.class
+com/vassarlabs/common/dsp/err/ObjectUpdateException.class
+com/vassarlabs/common/dsp/err/DSPException.class
+com/vassarlabs/common/dsp/utils/DSPConstants.class
+com/vassarlabs/common/dsp/rdbms/api/IRDBMSDataStore.class
+com/vassarlabs/common/dsp/api/IDataStoreConnection.class
+com/vassarlabs/common/dsp/err/FetchingObjectException.class
+com/vassarlabs/common/dsp/err/MoreThanOneObjectFoundException.class
+com/vassarlabs/common/dsp/err/DSPPropertyException.class
+com/vassarlabs/common/dsp/context/DataStoreContext$1.class
+com/vassarlabs/common/dsp/rdbms/api/IJDBCConnection.class
+com/vassarlabs/common/dsp/api/IDataStore.class
+com/vassarlabs/common/dsp/err/ObjectCreationException.class
+com/vassarlabs/common/dsp/nosql/api/INoSQLDataStore.class
+com/vassarlabs/common/dsp/context/DataStoreContext.class
+com/vassarlabs/common/dsp/api/IDataServiceProvider.class
+com/vassarlabs/common/dsp/cp/api/IDSConnectionPoolManager.class

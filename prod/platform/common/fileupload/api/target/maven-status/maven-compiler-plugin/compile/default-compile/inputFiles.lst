@@ -1,0 +1,5 @@
+/home/puru/projects/he/he/prod/platform/common/fileupload/api/src/main/java/com/vassarlabs/fileupload/pojo/api/IFileUploadResult.java
+/home/puru/projects/he/he/prod/platform/common/fileupload/api/src/main/java/com/vassarlabs/fileupload/pojo/api/IFileUploadDetails.java
+/home/puru/projects/he/he/prod/platform/common/fileupload/api/src/main/java/com/vassarlabs/fileupload/service/api/ICSVFileReaderService.java
+/home/puru/projects/he/he/prod/platform/common/fileupload/api/src/main/java/com/vassarlabs/fileupload/service/api/IFileUploadService.java
+/home/puru/projects/he/he/prod/platform/common/fileupload/api/src/main/java/com/vassarlabs/fileupload/dsp/api/IFileUploadDSP.java

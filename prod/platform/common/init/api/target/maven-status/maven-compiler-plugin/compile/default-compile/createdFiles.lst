@@ -1,0 +1,4 @@
+com/vassarlabs/common/init/service/api/IApplicationInitService.class
+com/vassarlabs/common/init/component/api/IAppComponentInitializer.class
+com/vassarlabs/common/init/err/AppComponentInitException.class
+com/vassarlabs/common/init/err/AppInitializationException.class

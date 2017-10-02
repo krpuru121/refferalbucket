@@ -1,0 +1,3 @@
+com/vassarlabs/cassandra/connection/impl/CassandraConnectionImpl.class
+com/vassarlabs/cassandra/connection/pool/impl/CassandraConnectionPoolImpl.class
+com/vassarlabs/cassandra/datastore/impl/CassandraDataStoreImpl.class
