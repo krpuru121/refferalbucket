@@ -7,7 +7,6 @@
 	<packaging>pom</packaging>
 
 	<name>platform</name>
-	<url>http://maven.apache.org</url>
 
 	<modules>
 		<module>conf</module>

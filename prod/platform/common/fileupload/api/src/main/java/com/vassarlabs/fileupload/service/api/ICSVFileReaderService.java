@@ -22,5 +22,5 @@ public interface ICSVFileReaderService {
 	 * @throws IOException
 	 */
 	public <E> List<E> readCSVFile(IFileUploadDetails fileUploadDetails, Class<E> classType) throws IOException;
-	
+
 }

@@ -31,7 +31,6 @@ public class AppContext {
     	if (ctx == null) {
     		synchronized (LOCK_OBJECT) {
 				if (ctx == null) {
-					//ctx = new ClassPathXmlApplicationContext(new String[] {"spring/platform-application-context.xml", "spring/dsp-application-context.xml" , "spring/cassandra-application-context.xml"});
 					ctx = new ClassPathXmlApplicationContext(new String[] {"spring/platform-application-context.xml", "spring/cassandra-application-context.xml"});
 				}
 			}

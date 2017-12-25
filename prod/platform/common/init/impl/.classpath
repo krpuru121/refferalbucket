@@ -2,6 +2,7 @@
 <classpath>
   <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
   <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="var" path="M2_REPO/javax/inject/javax.inject/1/javax.inject-1.jar"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
   <classpathentry kind="src" path="/platform-common-utils"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-context/4.3.8.RELEASE/spring-context-4.3.8.RELEASE.jar"/>
@@ -17,11 +18,36 @@
   <classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.4/commons-lang-2.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/google/code/gson/gson/2.3/gson-2.3.jar" sourcepath="M2_REPO/com/google/code/gson/gson/2.3/gson-2.3-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/commons-io/commons-io/2.5/commons-io-2.5.jar"/>
-  <classpathentry kind="var" path="M2_REPO/com/opencsv/opencsv/3.8/opencsv-3.8.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-io/commons-io/2.5/commons-io-2.5.jar" sourcepath="M2_REPO/commons-io/commons-io/2.5/commons-io-2.5-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/opencsv/opencsv/3.8/opencsv-3.8.jar" sourcepath="M2_REPO/com/opencsv/opencsv/3.8/opencsv-3.8-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-beanutils/commons-beanutils/1.9.2/commons-beanutils-1.9.2.jar"/>
-  <classpathentry kind="var" path="M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/mindrot/jbcrypt/0.3m/jbcrypt-0.3m.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-validator/commons-validator/1.6/commons-validator-1.6.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-digester/commons-digester/1.8.1/commons-digester-1.8.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/inject/guice/4.0/guice-4.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/guava/guava/19.0/guava-19.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-aspects/4.3.8.RELEASE/spring-aspects-4.3.8.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/aspectj/aspectjweaver/1.7.2/aspectjweaver-1.7.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/aspectj/aspectjrt/1.7.2/aspectjrt-1.7.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/aspectj/aspectjtools/1.7.2/aspectjtools-1.7.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/joda-time/joda-time/2.9.9/joda-time-2.9.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/data/spring-data-rest-webmvc/3.0.1.RELEASE/spring-data-rest-webmvc-3.0.1.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/data/spring-data-rest-core/3.0.1.RELEASE/spring-data-rest-core-3.0.1.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/hateoas/spring-hateoas/0.23.0.RELEASE/spring-hateoas-0.23.0.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-web/5.0.1.RELEASE/spring-web-5.0.1.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-webmvc/5.0.1.RELEASE/spring-webmvc-5.0.1.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/data/spring-data-commons/2.0.1.RELEASE/spring-data-commons-2.0.1.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/plugin/spring-plugin-core/1.2.0.RELEASE/spring-plugin-core-1.2.0.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/atteo/evo-inflector/1.2.2/evo-inflector-1.2.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-annotations/2.9.2/jackson-annotations-2.9.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.9.2/jackson-datatype-jdk8-2.9.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-core/2.9.2/jackson-core-2.9.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-databind/2.9.2/jackson-databind-2.9.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.5/commons-codec-1.5.jar"/>
   <classpathentry kind="src" path="/platform-config-conf"/>
   <classpathentry kind="src" path="/platform-config-api"/>
   <classpathentry kind="src" path="/platform-config-impl"/>
@@ -35,9 +61,7 @@
   <classpathentry kind="var" path="M2_REPO/io/netty/netty-common/4.0.37.Final/netty-common-4.0.37.Final.jar"/>
   <classpathentry kind="var" path="M2_REPO/io/netty/netty-transport/4.0.37.Final/netty-transport-4.0.37.Final.jar"/>
   <classpathentry kind="var" path="M2_REPO/io/netty/netty-codec/4.0.37.Final/netty-codec-4.0.37.Final.jar"/>
-  <classpathentry kind="var" path="M2_REPO/com/google/guava/guava/19.0/guava-19.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/io/dropwizard/metrics/metrics-core/3.1.2/metrics-core-3.1.2.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/github/jnr/jnr-ffi/2.0.7/jnr-ffi-2.0.7.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/github/jnr/jffi/1.2.10/jffi-1.2.10.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/github/jnr/jffi/1.2.10/jffi-1.2.10-native.jar"/>

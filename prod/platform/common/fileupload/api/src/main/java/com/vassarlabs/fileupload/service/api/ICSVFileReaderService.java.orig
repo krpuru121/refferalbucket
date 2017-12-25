@@ -1,0 +1,37 @@
+package com.vassarlabs.fileupload.service.api;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
+
+import com.vassarlabs.common.utils.err.IErrorObject;
+import com.vassarlabs.fileupload.pojo.api.IFileUploadDetails;
+
+/**
+ * Reads different types of files and send its results in various forms
+ * 
+ * @author vaibhav
+ *
+ */
+public interface ICSVFileReaderService {
+
+	/**
+	 * 
+	 * Reads a CSV file and returns <List> of  models
+	 * 
+	 * @param {@link IFileUploadDetails}
+	 * @param errorObjectList
+	 * @param classType
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+<<<<<<< HEAD
+	public <E> List<E> readCSVFile(IFileUploadDetails fileUploadDetails, Class<E> classType) throws IOException;
+
+=======
+	public <E> List<E> readCSVFile(IFileUploadDetails fileUploadDetails, List<IErrorObject> errorObjectList, Class<E> classType)
+			throws FileNotFoundException, IOException;
+	
+>>>>>>> 6014e5aba1b981288d7dc9ed86c083be4cc77908
+}

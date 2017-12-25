@@ -1,8 +1,7 @@
 package com.vassarlabs.fileupload.pojo.api;
 
 import java.util.Map;
-
-import com.vassarlabs.fileupload.utils.UploadType;
+import java.util.Properties;
 
 /**
  * Represents File Upload Details
@@ -27,17 +26,11 @@ public interface IFileUploadDetails {
 	public Long getFileUploadTs();
 	public void setFileUploadTs(Long fileUploadTs);
 
-	public UploadType getUploadType();
-	public void setUploadType(UploadType uploadType);
-
-	public Long getTotalNoOfRecords();
-	public void setTotalNoOfRecords(Long totalNoOfRecords);
-
 	public Integer getBatchSize();
 	public void setBatchSize(Integer batchSize);
 	
-	public Integer getBatchNo();
-	public void setBatchNo(Integer batchNo);
+	public Properties getProperties();
+	public void setProperties(Properties properties);
 	
 	public Map<String, String> getColumnNameMapping();
 	public void setColumnNameMapping(Map<String, String> columnNameMapping);

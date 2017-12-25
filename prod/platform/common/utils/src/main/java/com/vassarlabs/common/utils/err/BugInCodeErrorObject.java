@@ -6,8 +6,8 @@ public class BugInCodeErrorObject
 	extends ErrorObject {
 	
 	public BugInCodeErrorObject(String errorMessage) {
-		this.errorCodeInt = IErrorObject.BUG_IN_CODE_ERROR_CODE;
-		this.errorCodeStr = StringUtils.EMPTY_STRING;
+		this.errorCode = IErrorObject.BUG_IN_CODE_ERROR_CODE;
+		this.errorType = StringUtils.EMPTY_STRING;
 		this.errorMessage = errorMessage;
 	}
 }

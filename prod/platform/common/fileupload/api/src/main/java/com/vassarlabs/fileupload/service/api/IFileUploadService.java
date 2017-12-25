@@ -1,9 +1,10 @@
 package com.vassarlabs.fileupload.service.api;
 
 import java.io.IOException;
-
+import com.vassarlabs.common.dsp.err.DSPException;
 import com.vassarlabs.common.utils.err.InsufficientDataException;
 import com.vassarlabs.common.utils.err.ObjectNotFoundException;
+import com.vassarlabs.config.err.PropertyNotFoundException;
 import com.vassarlabs.fileupload.pojo.api.IFileUploadDetails;
 
 /**
@@ -19,6 +20,6 @@ import com.vassarlabs.fileupload.pojo.api.IFileUploadDetails;
  */
 public interface IFileUploadService {
 
-	public <E> void uploadFile(IFileUploadDetails fileUploadDetails, Class<E> classType) throws IOException, ObjectNotFoundException, InsufficientDataException;
-	
+	public <E> void uploadFile(IFileUploadDetails fileUploadDetails, Class<E> classType) throws IOException, ObjectNotFoundException, InsufficientDataException, PropertyNotFoundException, DSPException;
+
 }

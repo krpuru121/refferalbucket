@@ -80,7 +80,7 @@ public interface ICassandraDataStore extends INoSQLDataStore{
 	public ResultSetFuture executeAsync(String query) throws DSPException;
 		
 	/**
-	 * executes statement asynchnously
+	 * executes statement asynchronously
 	 * statement with defined consistency level
 	 * @param statement
 	 * @return

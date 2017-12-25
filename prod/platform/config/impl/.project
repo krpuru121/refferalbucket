@@ -11,13 +11,13 @@
       <name>org.eclipse.jdt.core.javabuilder</name>
     </buildCommand>
     <buildCommand>
-      <name>org.eclipse.m2e.core.maven2Builder</name>
-    </buildCommand>
-    <buildCommand>
       <name>org.springframework.ide.eclipse.core.springbuilder</name>
     </buildCommand>
     <buildCommand>
       <name>org.springframework.ide.eclipse.boot.validation.springbootbuilder</name>
+    </buildCommand>
+    <buildCommand>
+      <name>org.eclipse.m2e.core.maven2Builder</name>
     </buildCommand>
   </buildSpec>
   <natures>

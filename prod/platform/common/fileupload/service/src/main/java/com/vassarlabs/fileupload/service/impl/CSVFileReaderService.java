@@ -1,14 +1,17 @@
 package com.vassarlabs.fileupload.service.impl;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
 import com.opencsv.CSVParser;
@@ -19,16 +22,24 @@ import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
 import com.opencsv.bean.MappingStrategy;
 import com.vassarlabs.common.logging.api.IVLLogService;
 import com.vassarlabs.common.logging.api.IVLLogger;
+import com.vassarlabs.common.utils.err.ErrorObject;
+import com.vassarlabs.common.utils.err.IErrorObject;
+import com.vassarlabs.fileupload.event.impl.FileUploadEvent;
 import com.vassarlabs.fileupload.pojo.api.IFileUploadDetails;
 import com.vassarlabs.fileupload.service.api.ICSVFileReaderService;
+import com.vassarlabs.fileupload.service.api.ICSVFileWriterService;
 import com.vassarlabs.fileupload.utils.FileUploadConstants;
 
 @Component
-public class CSVFileReaderService 
-	implements ICSVFileReaderService {
+public class CSVFileReaderService implements ICSVFileReaderService {
 	
 	@Autowired
+	protected ApplicationEventPublisher publisher;
+    
+	@Autowired
 	private IVLLogService logFactory;
+	
+	@Autowired ICSVFileWriterService csvFileWriterService;
 
 	private IVLLogger logger;
 
@@ -42,22 +53,16 @@ public class CSVFileReaderService
 		
 		List<E> list = null;
 		CSVReader reader = null;
+		CSVBeanReader<E> csvToBean = null;
+		MappingStrategy<E> mappingStrategy = null;
 		
 		try {
 
+			csvToBean = new CSVBeanReader<E>();
 			reader = getCSVReader(fileUploadDetails);
+			mappingStrategy = getMappingStrategy(fileUploadDetails, classType);
 			
-			CSVBeanReader<E> csvToBean = new CSVBeanReader<E>();
-			
-			MappingStrategy<E> mappingStrategy = getMappingStrategy(fileUploadDetails, classType);
-			
-			if(mappingStrategy == null)
-			{
-				logger.info("FileReaderService - readCSVFile(IFileUploadDetails fileUploadDetails, Class<E> classType) :: Could not create startegy ; Upload Type - "+fileUploadDetails.getUploadType());
-				return list;
-			}
-			
-			list = getDataFromReader(fileUploadDetails, csvToBean, mappingStrategy, reader);
+			parseData(fileUploadDetails, csvToBean, mappingStrategy, reader, classType);
 		}
 		finally{
 			if(reader != null)
@@ -71,12 +76,12 @@ public class CSVFileReaderService
 		
 		CSVReader csvReader = null;
 		
-		if(fileUploadDetails.getDelimiter() == FileUploadConstants.CHAR_DEFAULT_VALUE && fileUploadDetails.getQuotedChar() == FileUploadConstants.CHAR_DEFAULT_VALUE){
-		
+		if(fileUploadDetails.getDelimiter() != FileUploadConstants.CHAR_DEFAULT_VALUE && fileUploadDetails.getQuotedChar() != FileUploadConstants.CHAR_DEFAULT_VALUE){
+			
 			csvReader =  new CSVReaderBuilder(new FileReader(fileUploadDetails.getFileFullPath()))
-						.withCSVParser(new CSVParser(CSVParser.DEFAULT_SEPARATOR))
+						.withCSVParser(new CSVParser(fileUploadDetails.getDelimiter(), fileUploadDetails.getQuotedChar()))
 						.build();
-					
+
 		} else if(fileUploadDetails.getDelimiter() == FileUploadConstants.CHAR_DEFAULT_VALUE){
 			
 			csvReader = new CSVReaderBuilder(new FileReader(fileUploadDetails.getFileFullPath()))
@@ -90,11 +95,11 @@ public class CSVFileReaderService
 						.build();
 		
 		} else {
-		
+
 			csvReader =  new CSVReaderBuilder(new FileReader(fileUploadDetails.getFileFullPath()))
-						.withCSVParser(new CSVParser(fileUploadDetails.getDelimiter(), fileUploadDetails.getQuotedChar()))
+						.withCSVParser(new CSVParser(CSVParser.DEFAULT_SEPARATOR))
 						.build();
-		
+					
 		}
 		
 		return csvReader;
@@ -120,55 +125,64 @@ public class CSVFileReaderService
 		}
 	}
 	
-	public <E> List<E> getDataFromReader(IFileUploadDetails fileUploadDetails, CSVBeanReader<E> csvToBeanReader, MappingStrategy<E> mappingStrategy, CSVReader reader) throws IOException{
+	public <E> void parseData(IFileUploadDetails fileUploadDetails, CSVBeanReader<E> csvToBeanReader, MappingStrategy<E> mappingStrategy, CSVReader reader, Class<E> source) throws IOException{
 		
 		List<E> list = new ArrayList<E>();
+		List<IErrorObject> errorObjectList = new ArrayList<>();
 		
-		switch (fileUploadDetails.getUploadType()) {
-			
-			case UPLOAD: case UPLOADWITHNAMEMAPPING: default:
-			
-				list = csvToBeanReader.parse(mappingStrategy, reader);
-			
-			break;
-			
-			case UPLOADWITHBATCH: case UPLOADWITHBATCHANDNAMEMAPPING:
-				
-				mappingStrategy.captureHeader(reader);
-				
-				String[] readLine = null;
-				int i = -1;
-				
-				do {
+		mappingStrategy.captureHeader(reader);
+		
+		String[] readLine = null;
+		int i = 0;
+		
+		do {
+			i++;
 
-					i++;
+			if(readLine != null && readLine.length != 0){
+				try{
+					list.add(csvToBeanReader.processLine(mappingStrategy, readLine));
+				}
+				catch(Exception e){
 					
-					if(i <= fileUploadDetails.getBatchSize() * fileUploadDetails.getBatchNo())
-					{
-						readLine = reader.readNext();
-						continue;
-					}
+					IErrorObject errorObject = new ErrorObject();
 					
-					if(readLine != null && readLine.length != 0){
-						try{
-							list.add(csvToBeanReader.processLine(mappingStrategy, readLine));
-						}
-						catch(Exception e){
-							logger.error("In FileReaderService : getDataFromReader(IFileUploadDetails fileUploadDetails, CSVBeanReader<E> csvToBeanReader, MappingStrategy<E> mappingStrategy, CSVReader reader) :: Exception while parsing line ", e);
-						}
-					}
-					readLine = reader.readNext();
+					errorObject.setLineNo(Integer.valueOf(readLine[0]));
+					errorObject.setErrorCode(IErrorObject.FILE_UPLOAD_ERROR_CODE);
+					errorObject.setErrorType(IErrorObject.FILE_UPLOAD_ERROR_MESSAGE);
+					errorObject.setErrorMessage("error in parsing the line ");
+					errorObject.setRowUploadStatus(IErrorObject.ROW_NOT_UPLOADED_SUCCESSFULLY_MESSAGE);
+					errorObject.setRowData(Arrays.toString(readLine));
 					
-					if(readLine == null)
-						break;
-					
-				} while(i < fileUploadDetails.getBatchSize() * (fileUploadDetails.getBatchNo() + 1));
-				
-			break;
+					errorObjectList.add(errorObject);
+					logger.error("In FileReaderService : getDataFromReader(IFileUploadDetails fileUploadDetails, CSVBeanReader<E> csvToBeanReader, MappingStrategy<E> mappingStrategy, CSVReader reader) :: Exception while parsing line ", e);
+				}
+			}
 			
+			if(list.size() == fileUploadDetails.getBatchSize()){
+				if(errorObjectList.size() > 0){
+					File file = new File(fileUploadDetails.getFileFullPath());
+					String parent = file.getParent();
+					csvFileWriterService.writeErrorsInCSVFile(errorObjectList, parent, fileUploadDetails.getFileName(), IErrorObject.class);
+				}
+				publisher.publishEvent(new FileUploadEvent<E>(source, fileUploadDetails, list));
+				list = new ArrayList<E>();
+			}
+			
+			readLine = reader.readNext();
+			
+		} while(readLine != null);
+		
+		if(list.size() != 0){
+			if(errorObjectList.size() > 0){
+				File file = new File(fileUploadDetails.getFileFullPath());
+				String parent = file.getParent();
+				csvFileWriterService.writeErrorsInCSVFile(errorObjectList, parent, fileUploadDetails.getFileName(), IErrorObject.class);
+			}
+			
+			//publisher.publishEvent(new FileUploadEvent<E>(source, fileUploadDetails, list));
+			list = new ArrayList<E>();
 		}
-		
-		return list;
+	
 	}
-
+	
 }

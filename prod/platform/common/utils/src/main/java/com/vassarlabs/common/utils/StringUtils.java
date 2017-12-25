@@ -95,13 +95,41 @@ public class StringUtils {
 			return null;
 		}
 		StringBuilder builder = new StringBuilder();
-		builder.append(columnNameList.get(0));
+		builder.append(SINGLE_QUOTE_STRING).append(columnNameList.get(0)).append(SINGLE_QUOTE_STRING);
 		for(int i=1; i< columnNameList.size(); i++) {
-			builder.append(COMMA_STRING).append(columnNameList.get(i));
+			builder.append(COMMA_STRING).append(SINGLE_QUOTE_STRING).append(columnNameList.get(i)).append(SINGLE_QUOTE_STRING);
 		}
 		return builder.toString();
 		
 	}
 	
+	public static String getFirstNotEmpty(List<String> list) {
+	    if (list == null || list.isEmpty()) {
+	      return null;
+	    }
+	    for (String item : list) {
+	      if (item != null && !item.isEmpty()) {
+	        return item;
+	      }
+	    }
+	    return null;
+	}
 	
+	public static String concatenate(String... list) {
+	   return concatenate(' ', list);
+	}
+	
+	public static String concatenate(char delimitter, String... list) {
+	    String finalString = "";
+		if (list == null || list.length == 0) {
+	      return null;
+	    }
+	    for (String item : list) {
+	      if (item != null && !item.isEmpty()) {
+	        finalString.concat(item).concat(String.valueOf(delimitter));
+	      }
+	    }
+	    finalString.trim();
+	    return finalString;
+	}
 }

@@ -1,10 +1,9 @@
 package com.vassarlabs.fileupload.pojo.impl;
 
 import java.util.Map;
+import java.util.Properties;
 
 import com.vassarlabs.fileupload.pojo.api.IFileUploadDetails;
-import com.vassarlabs.fileupload.utils.UploadType;
-
 
 public class FileUploadDetails implements IFileUploadDetails{
 
@@ -13,10 +12,8 @@ public class FileUploadDetails implements IFileUploadDetails{
 	protected char quotedChar;
 	protected char delimiter;
 	protected Long fileUploadTs;
-	protected UploadType uploadType;
-	protected Long totalNoOfRecords;;
 	protected Integer batchSize;
-	protected Integer batchNo;
+	protected Properties properties;
 	protected Map<String, String> columnNameMapping;
 	
 	@Override
@@ -70,16 +67,6 @@ public class FileUploadDetails implements IFileUploadDetails{
 	}
 	
 	@Override
-	public UploadType getUploadType() {
-		return this.uploadType;
-	}
-
-	@Override
-	public void setUploadType(UploadType uploadType) {
-		this.uploadType = uploadType;
-	}
-
-	@Override
 	public String getFileFullPath() {
 		return this.fullFilePath;
 	}
@@ -88,27 +75,17 @@ public class FileUploadDetails implements IFileUploadDetails{
 	public void setFileFullPath(String fullFilePath) {
 		this.fullFilePath = fullFilePath;
 	}
-
-	@Override
-	public Long getTotalNoOfRecords() {
-		return this.totalNoOfRecords;
-	}
-
-	@Override
-	public void setTotalNoOfRecords(Long totalNoOfRecords) {
-		this.totalNoOfRecords = totalNoOfRecords;
-	}
 	
 	@Override
-	public Integer getBatchNo() {
-		return this.batchNo;
+	public Properties getProperties() {
+		return this.properties;
 	}
 
 	@Override
-	public void setBatchNo(Integer batchNo) {
-		this.batchNo = batchNo;
+	public void setProperties(Properties properties) {
+		this.properties = properties;
 	}
-
+	
 	@Override
 	public Map<String, String> getColumnNameMapping() {
 		return this.columnNameMapping;
@@ -117,6 +94,15 @@ public class FileUploadDetails implements IFileUploadDetails{
 	@Override
 	public void setColumnNameMapping(Map<String, String> columnNameMapping) {
 		this.columnNameMapping = columnNameMapping;
+	}
+
+	@Override
+	public String toString() {
+		return "FileUploadDetails [fileName=" + fileName + ", fullFilePath="
+				+ fullFilePath + ", delimiter="
+				+ delimiter + ", fileUploadTs=" + fileUploadTs
+				+ ", batchSize=" + batchSize + ", properties=" + properties
+				+ ", columnNameMapping=" + columnNameMapping + ", quotedChar=" + quotedChar + "]";
 	}
 
 }

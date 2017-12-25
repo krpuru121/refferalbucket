@@ -1,5 +1,8 @@
-com/vassarlabs/fileupload/service/api/ICSVFileReaderService.class
-com/vassarlabs/fileupload/pojo/api/IFileUploadDetails.class
+com/vassarlabs/fileupload/service/api/ICSVFileWriterService.class
+com/vassarlabs/fileupload/aspect/api/IFileUploadAspect.class
 com/vassarlabs/fileupload/pojo/api/IFileUploadResult.class
 com/vassarlabs/fileupload/dsp/api/IFileUploadDSP.class
 com/vassarlabs/fileupload/service/api/IFileUploadService.class
+com/vassarlabs/fileupload/service/api/ICSVFileReaderService.class
+com/vassarlabs/fileupload/pojo/api/IFileUploadDetails.class
+com/vassarlabs/fileupload/event/api/IFileUploadEvent.class

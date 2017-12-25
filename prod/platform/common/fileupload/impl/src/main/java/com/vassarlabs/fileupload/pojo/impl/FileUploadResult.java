@@ -11,11 +11,11 @@ public class FileUploadResult implements IFileUploadResult{
 	protected int noOfRecords;
 	protected int noOfSuccessfulRecords;
 	protected int noOfErrorRecords;
-	protected List<IErrorObject> errorList;
-	protected IFileUploadDetails fileDetails;
 	protected int uploadStatus;
 	protected int noOfInsertedRecords;
 	protected int noOfUpdatedRecords;
+	protected List<IErrorObject> errorList;
+	protected IFileUploadDetails fileDetails;
 	
 	@Override
 	public int getNoOfInsertedRecords() {

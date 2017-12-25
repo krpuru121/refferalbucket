@@ -10,6 +10,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+
 /**
  * @author zubair
  *
@@ -1106,6 +1109,22 @@ public static String getYearAndMonthString(long timeStamp){
 			
 			return toFormatValue;
 		}
+		
+		public static String changeDateFormatWithErrorMessage(String fromFormat, String toFormat, String fromFormatValue, String errorMessage){
+			SimpleDateFormat sdfFrom = new SimpleDateFormat(fromFormat);
+			SimpleDateFormat sdfTo = new SimpleDateFormat(toFormat);
+			String toFormatValue = fromFormatValue; // Worst case?
+			try {
+				java.util.Date dateFrom =  sdfFrom.parse(fromFormatValue);
+				toFormatValue = sdfTo.format(dateFrom);
+			} catch (ParseException e) {
+				errorMessage = e.getMessage()+" Could not convert the date to "+sdfTo+" format";
+				System.out.println(e.getMessage()+" Could not convert the date to "+sdfTo+" format");
+				return null;
+			}
+			
+			return toFormatValue;
+		}
 	
 		/*
 		 * Returns last monsoon start day 
@@ -1300,7 +1319,6 @@ public static String getYearAndMonthString(long timeStamp){
 			}
 		}
 		
-		
 		/**
 		 * substracts X days from the given reference date
 		 * and returns the new date.
@@ -1316,4 +1334,9 @@ public static String getYearAndMonthString(long timeStamp){
 			timeStamp = timeStamp - (noOfDays * TWENTY_FOUR_HOURS_IN_SECONDS);
 			return getModelDateFromTs(timeStamp);
 		}
+		
+		public static DateTime convertLongToDateTime(long time){
+			return new DateTime(time, DateTimeZone.getDefault()) ;
+		}
+		
 }
